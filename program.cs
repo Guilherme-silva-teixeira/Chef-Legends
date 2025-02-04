@@ -24,9 +24,9 @@ namespace BurgerLegends
             int tomatoTotal = 0;
             int beefTotal = 0;
 
-            Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\Shake\\Pictures\\lettuce.png");
-            Texture2D chef = Raylib.LoadTexture("C:\\Users\\shake\\Pictures\\chef.png");
-            Texture2D tomatoTex = Raylib.LoadTexture("C:\\Users\\Shake\\Pictures\\tomato.png");
+            Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\lettuce.png");
+            Texture2D chef = Raylib.LoadTexture("C:\\Users\\\\Pictures\\chef.png");
+            Texture2D tomatoTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\tomato.png");
 
             if(!gameOver)
             {
