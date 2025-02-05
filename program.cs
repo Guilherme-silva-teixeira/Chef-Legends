@@ -123,7 +123,6 @@ namespace BurgerLegends
                     {
                         player.X = Raylib.GetScreenWidth() - player.Width;
                     }
-
                     //debug
 
                     Console.Clear();
