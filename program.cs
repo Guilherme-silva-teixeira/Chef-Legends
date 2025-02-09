@@ -19,6 +19,7 @@ namespace BurgerLegends
             Rectangle lettuce = new Rectangle(0, 0, 33, 33);
             Rectangle tomato = new Rectangle(0, 0, 33, 33);
             Rectangle beef = new Rectangle(0, 0, 33, 33);
+            Rectangle kitchenBackground = new Rectangle(0, 0, Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 
             int lettuceTotal = 0;
             int tomatoTotal = 0;
@@ -27,6 +28,7 @@ namespace BurgerLegends
             Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\lettuce.png");
             Texture2D chef = Raylib.LoadTexture("C:\\Users\\\\Pictures\\chef.png");
             Texture2D tomatoTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\tomato.png");
+            Texture2D kitchen = Raylib.LoadTexture("C:\\Users\\\\Pictures\\kitchen.png");
 
             if(!gameOver)
             {
@@ -34,8 +36,8 @@ namespace BurgerLegends
                 bool collisionWithTomato = false;
                 bool collisionWithBeef = false;
 
-                lettuce.X = random.Next(Raylib.GetScreenWidth()-33);
-                tomato.X = random.Next(Raylib.GetScreenWidth()-37);
+                lettuce.X = random.Next(Raylib.GetScreenWidth() - 33);
+                tomato.X = random.Next(Raylib.GetScreenWidth() - 37);
                 beef.X = random.Next(Raylib.GetScreenWidth() - 41);
 
                 lettuce.Y = random.Next(3);
@@ -46,6 +48,7 @@ namespace BurgerLegends
                 {
                     Raylib.BeginDrawing();
                     Raylib.ClearBackground(Color.White);
+                    Raylib.DrawTextureEx(kitchen, new Vector2(kitchenBackground.X, kitchenBackground.Y), 0, 1.0f , Color.White);
 
                     Raylib.DrawRectangleLinesEx(player, 1, Color.Black);
 
@@ -123,6 +126,7 @@ namespace BurgerLegends
                     {
                         player.X = Raylib.GetScreenWidth() - player.Width;
                     }
+
                     //debug
 
                     Console.Clear();
