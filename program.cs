@@ -19,11 +19,25 @@ namespace BurgerLegends
             Rectangle lettuce = new Rectangle(0, 0, 33, 33);
             Rectangle tomato = new Rectangle(0, 0, 33, 33);
             Rectangle beef = new Rectangle(0, 0, 33, 33);
+            Rectangle cheese = new Rectangle(0, 0, 33, 33);
+            Rectangle topBun = new Rectangle(0, 0, 33, 33);
+            Rectangle bottomBun = new Rectangle(0, 0, 33, 33);
+            //texture
             Rectangle kitchenBackground = new Rectangle(0, 0, Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
-
+            //menu
+            Rectangle topBunSlot = new Rectangle(Raylib.GetScreenWidth()-33,Raylib.GetScreenHeight()-231,33,33);
+            Rectangle lettuceSlot = new Rectangle(Raylib.GetScreenWidth()-33, Raylib.GetScreenHeight()-198, 33, 33);
+            Rectangle tomatoSlot = new Rectangle(Raylib.GetScreenWidth()-33, Raylib.GetScreenHeight()-165, 33, 33);
+            Rectangle cheseSlot = new Rectangle(Raylib.GetScreenWidth()-33,Raylib.GetScreenHeight()-132,33,33);
+            Rectangle beefSlot = new Rectangle(Raylib.GetScreenWidth() - 33, Raylib.GetScreenHeight()-99,33,33);
+            Rectangle bottomBunSlot = new Rectangle(Raylib.GetScreenWidth() - 33, Raylib.GetScreenHeight()-66, 33, 33);
+            //total
             int lettuceTotal = 0;
             int tomatoTotal = 0;
             int beefTotal = 0;
+            int cheeseTotal = 0;
+            int topBunTotal = 0;
+            int bottomBunTotal = 0;
 
             Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\lettuce.png");
             Texture2D chef = Raylib.LoadTexture("C:\\Users\\\\Pictures\\chef.png");
@@ -59,6 +73,17 @@ namespace BurgerLegends
                     Raylib.DrawRectangleLinesEx(lettuce, 1, Color.Green);
                     Raylib.DrawRectangleLinesEx(tomato, 1, Color.Red);
                     Raylib.DrawRectangleLinesEx(beef, 1, Color.Brown);
+                    //menu
+                    Raylib.DrawRectangleLinesEx(topBunSlot, 1, Color.Orange);
+                    Raylib.DrawRectangleLinesEx(lettuceSlot, 1, Color.Green);
+                    Raylib.DrawRectangleLinesEx(tomatoSlot, 1, Color.Red);
+                    Raylib.DrawRectangleLinesEx(cheseSlot, 1, Color.Yellow);
+                    Raylib.DrawRectangleLinesEx(beefSlot, 1, Color.Brown);
+                    Raylib.DrawRectangleLinesEx(bottomBunSlot, 1, Color.Orange);
+                    //Text
+                    Raylib.DrawText("+" + topBunTotal, int.Parse(topBunSlot.X.ToString())+23, int.Parse(topBunSlot.Y.ToString())+23, 7,Color.Black);
+                    Raylib.DrawTextEx(Raylib.GetFontDefault(), "+" + lettuceTotal, new Vector2( int.Parse(lettuceSlot.X.ToString()) + 23, int.Parse(lettuceSlot.Y.ToString()) + 23), -13,7, Color.Black);
+
 
                     if (Raylib.CheckCollisionRecs(player, lettuce))
                     {
@@ -108,6 +133,8 @@ namespace BurgerLegends
                     Raylib.DrawTextureEx(chef, new Vector2(player.X - 7, player.Y - 23), 0, 0.5f, Color.White);
                     Raylib.DrawTextureEx(lettuceTex, new Vector2(lettuce.X - 7, lettuce.Y - 1), 0, 1.1f, Color.White);
                     Raylib.DrawTextureEx(tomatoTex, new Vector2(tomato.X-7, tomato.Y),0,0.21f,Color.White);
+
+
 
                     if (Raylib.IsKeyDown(KeyboardKey.A))
                     {
