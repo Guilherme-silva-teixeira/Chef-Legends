@@ -39,10 +39,10 @@ namespace BurgerLegends
             int topBunTotal = 0;
             int bottomBunTotal = 0;
 
-            Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\lettuce.png");
-            Texture2D chef = Raylib.LoadTexture("C:\\Users\\\\Pictures\\chef.png");
-            Texture2D tomatoTex = Raylib.LoadTexture("C:\\Users\\\\Pictures\\tomato.png");
-            Texture2D kitchen = Raylib.LoadTexture("C:\\Users\\\\Pictures\\kitchen.png");
+            Texture2D lettuceTex = Raylib.LoadTexture("C:\\Users\\Shake\\Pictures\\lettuce.png");
+            Texture2D chef = Raylib.LoadTexture("C:\\Users\\shake\\Pictures\\chef.png");
+            Texture2D tomatoTex = Raylib.LoadTexture("C:\\Users\\Shake\\Pictures\\tomato.png");
+            Texture2D kitchen = Raylib.LoadTexture("C:\\Users\\Shake\\Pictures\\kitchen.png");
 
             if(!gameOver)
             {
@@ -69,7 +69,8 @@ namespace BurgerLegends
                     lettuce.Y += 1;
                     tomato.Y += 1;
                     beef.Y += 1;
-                    
+
+                    //floating itens
                     Raylib.DrawRectangleLinesEx(lettuce, 1, Color.Green);
                     Raylib.DrawRectangleLinesEx(tomato, 1, Color.Red);
                     Raylib.DrawRectangleLinesEx(beef, 1, Color.Brown);
@@ -155,7 +156,6 @@ namespace BurgerLegends
                     }
 
                     //debug
-
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Player: (x)" + player.X);
