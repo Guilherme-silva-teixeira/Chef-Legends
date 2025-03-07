@@ -8,18 +8,32 @@ class Program
 
     public static void Main()
     {
-        Raylib.InitWindow(800, 480, "Hello World");
+        Raylib.InitWindow(800, 480, "Game");
         Raylib.SetTargetFPS(60);
 
         bool startCollision = false;
         bool optionCollision = false;
 
+        Rectangle pizzaRect = new Rectangle();
+        Rectangle burguerRect = new Rectangle();
+        Rectangle friesRect = new Rectangle();
+        Rectangle pastaRect = new Rectangle();
+
+        int money = 100;
+        int coins = 50;
+        float exp = 0;
+        int level = 0;
 
         while (!Raylib.WindowShouldClose())
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.White);
             init();
+
+            if(startCollision)
+            {
+            }
+
             Raylib.EndDrawing();
         }
 
