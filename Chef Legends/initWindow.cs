@@ -5,8 +5,8 @@ namespace chefLegends;
 
 class initWindow
 {
-    static bool startCollision = false;
-    static bool optionCollsion = false;
+    public bool startCollision = false;
+    public bool optionCollsion = false;
 
     static float animationTime = 0;
     static float animationDuration = 0.3f;
@@ -63,5 +63,23 @@ class initWindow
         Raylib.DrawRectangleLinesEx(options, 3, Color.Black);
 
         Raylib.EndDrawing();
+    }
+
+    public bool StartCollision
+    {
+        get { return startCollision; }
+        set { startCollision = value; }
+    }
+
+    public bool OptionCollision
+    {
+        get { return optionCollsion; }
+        set { optionCollsion = value; }
+    }
+
+    public void Delete()
+    {
+        startGame = new Rectangle(0, 0, 0, 0);
+        options = new Rectangle(0, 0, 0, 0);
     }
 }
