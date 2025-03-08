@@ -26,14 +26,14 @@ class Program
 
         while (!Raylib.WindowShouldClose())
         {
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.White);
             init();
 
             if(startCollision)
             {
             }
 
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.White);
             Raylib.EndDrawing();
         }
 
@@ -46,20 +46,36 @@ class Program
 
         void init()
         {
+            float deltaTime = Raylib.GetFrameTime();
+
+            float animationTime = 0;
+            float animationDuration = 0.3f;
+
             Rectangle startGame = new Rectangle(240, 180, 300, 50);
             Rectangle options = new Rectangle(240, 240, 300, 50);
             
             Vector2 mousePos = Raylib.GetMousePosition();
 
-            if (leftClickRect(startGame))
+            if(animationTime>0)
             {
-                startCollision = true;
-                startGame.Y = (startGame.Y + 7);
-            }else if(leftClickRect(options))
-            {
-                optionCollision = true;
-                options.Y = (options.Y + 7);
+                if (leftClickRect(startGame))
+                {
+                    startCollision = true;
+                    startGame.Y = (startGame.Y + 7);
+                    animationTime = animationDuration;
+                }
+                else if (leftClickRect(options))
+                {
+                    optionCollision = true;
+                    options.Y = (options.Y + 7);
+                }
             }
+
+            if (animationTime > 0)
+            {
+                animationTime -= deltaTime;
+            }
+
 
                 Raylib.DrawRectangleLinesEx(startGame, 3, Color.Black);
             Raylib.DrawRectangleLinesEx(options, 3, Color.Black);
