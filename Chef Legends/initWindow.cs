@@ -54,15 +54,11 @@ class initWindow
 
     public void Draw()
     {
-        Raylib.BeginDrawing();
-
-        Raylib.ClearBackground(Color.White);
 
         Raylib.DrawRectangleLinesEx(startGame, 3, Color.Black);
 
         Raylib.DrawRectangleLinesEx(options, 3, Color.Black);
 
-        Raylib.EndDrawing();
     }
 
     public bool StartCollision
