@@ -11,23 +11,23 @@ class Game
         Raylib.InitWindow(800, 600, "Game");
         Raylib.SetTargetFPS(60);
         Pizza pizza = new Pizza(0,0,0,0.0f);
-        int starts = 0;
-
-        if ((init.StartCollision == false || init.optionCollsion == false) || starts < 1)
-        {
-            init.Draw();
-        }
+        bool isStarted = init.startCollision;
 
         while (!Raylib.WindowShouldClose())
         {
-            init.Update();
-            if (init.StartCollision == true)
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.White);
+
+            if (!init.startCollision)
             {
-                starts += 1;
+                init.Update();
+                init.Draw();
+            }else
+            {
                 init.Delete();
-                pizza.Draw();
             }
 
+            Raylib.EndDrawing();
         }
 
         Raylib.CloseWindow();
