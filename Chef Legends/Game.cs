@@ -1,35 +1,81 @@
 using Raylib_cs;
-using chefLegends;
+using System.Numerics;
 
-namespace ChefLegends;
+namespace chefLegends;
 
-class Game
+class initWindow
 {
-    public static void Main()
+    public bool startCollision = false;
+    public bool optionCollsion = false;
+
+    static float animationTime = 0;
+    static float animationDuration = 0.3f;
+
+    static Rectangle startGame = new Rectangle(240, 180, 300, 50);
+    static Rectangle options = new Rectangle(240, 250, 300, 50);
+
+    public static bool leftClickRect(Rectangle rect)
     {
-        initWindow init = new initWindow();
-        Raylib.InitWindow(800, 600, "Game");
-        Raylib.SetTargetFPS(60);
-        Pizza pizza = new Pizza(0,0,0,0.0f);
-        bool isStarted = init.startCollision;
+        Vector2 mousePos = Raylib.GetMousePosition();
+        return Raylib.IsMouseButtonPressed(MouseButton.Left) &&
+            Raylib.CheckCollisionPointRec(mousePos, rect);
+    }
 
-        while (!Raylib.WindowShouldClose())
+    public void Update()
+    {
+        float deltaTime = Raylib.GetFrameTime();
+
+        if (animationTime <= 0)
         {
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.White);
-
-            if (!init.startCollision)
+            if(leftClickRect(startGame))
             {
-                init.Update();
-                init.Draw();
-            }else
-            {
-                init.Delete();
+                startCollision = true;
+                startGame.Y += 7;
+                animationTime = animationDuration;
             }
-
-            Raylib.EndDrawing();
+            else if(leftClickRect(options))
+            {
+                optionCollsion = true;
+                options.Y += 7;
+                animationTime = animationDuration;
+            }
         }
 
-        Raylib.CloseWindow();
+        if(animationTime>0)
+        {
+            animationTime -= deltaTime;
+            if (animationTime <= 0)
+            {
+                startGame.Y = 180;
+                options.Y = 250;
+            }
+        }
+    }
+
+    public void Draw()
+    {
+
+        Raylib.DrawRectangleLinesEx(startGame, 3, Color.Black);
+
+        Raylib.DrawRectangleLinesEx(options, 3, Color.Black);
+
+    }
+
+    public bool StartCollision
+    {
+        get { return startCollision; }
+        set { startCollision = value; }
+    }
+
+    public bool OptionCollision
+    {
+        get { return optionCollsion; }
+        set { optionCollsion = value; }
+    }
+
+    public void Delete()
+    {
+        startGame = new Rectangle(0, 0, 0, 0);
+        options = new Rectangle(0, 0, 0, 0);
     }
 }
