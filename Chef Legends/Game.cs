@@ -12,6 +12,7 @@ class Game
         Raylib.SetTargetFPS(60);
         Pizza pizza = new Pizza(0,0,0,0.0f);
         bool isStarted = init.startCollision;
+        secondMenu menu = new secondMenu();
 
         while (!Raylib.WindowShouldClose())
         {
@@ -25,11 +26,13 @@ class Game
             }else
             {
                 init.Delete();
+                menu.drawButtons();
+                menu.drawPizza();
+                menu.drawBurger();
             }
 
             Raylib.EndDrawing();
         }
-
         Raylib.CloseWindow();
     }
 }
