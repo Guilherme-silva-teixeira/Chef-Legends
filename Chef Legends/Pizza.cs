@@ -11,7 +11,7 @@ class Pizza
     public int cheese = 0;
     private float margherita = 0.0f;
 
-    Rectangle pizzaRec = new Rectangle(0,200,100,100);
+    
 
     public Pizza (int dough, int pepperoni, int cheese, float margherita)
     {
@@ -44,14 +44,4 @@ class Pizza
         get { return margherita; }
         set { margherita = value; }
     }
-
-    public void Draw()
-    {
-        Raylib.BeginDrawing();
-
-        Raylib.DrawRectangleLinesEx(pizzaRec, 1, Color.Yellow);
-
-        Raylib.EndDrawing();
-    }
-
 }
