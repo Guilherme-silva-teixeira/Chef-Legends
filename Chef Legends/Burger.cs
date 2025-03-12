@@ -26,4 +26,52 @@ class Burger
         this.chicken = chicken;
         this.bottomBun = bottomBun;
     }
+
+    public int TopBun
+    {
+        get { return topBun; }
+        set { topBun = value; }
+    }
+
+    public int Lettuce
+    {
+        get { return lettuce; }
+        set { lettuce = value; }
+    }
+
+    public int Tomato
+    {
+        get { return tomato; }
+        set { tomato = value; }
+    }
+
+    public float Cheese
+    {
+        get { return cheese; }
+        set { cheese = value; }
+    }
+
+    public float Beef
+    {
+        get { return beef; }
+        set { beef = value; }
+    }
+
+    public int Egg
+    {
+        get { return egg; }
+        set { egg = value; }
+    }
+
+    public float Chicken
+    {
+        get { return chicken; }
+        set { chicken = value; }
+    }
+
+    public int BottomBun
+    {
+        get { return bottomBun; }
+        set { bottomBun = value; }
+    }
 }
