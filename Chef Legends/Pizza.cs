@@ -8,7 +8,7 @@ class Pizza
 {
     private int dough = 0;
     private int pepperoni = 0;
-    public int cheese = 0;
+    private int cheese = 0;
     private float margherita = 0.0f;
 
     
