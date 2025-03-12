@@ -14,6 +14,16 @@ class Game
         bool isStarted = init.startCollision;
         secondMenu menu = new secondMenu();
 
+        pizza.Dough = 0;
+        pizza.Cheese = 0;
+        pizza.Margherita = 0;
+        pizza.Pepperoni = 0;
+
+        Rectangle pizzaCheeseRec = new Rectangle(0, 0, 23, 23);
+        Rectangle pizzaDoughRec = new Rectangle(0, 0, 23, 23);
+        Rectangle pizzaMargueritaRec = new Rectangle(0, 0, 23, 23);
+        Rectangle pizzaPepperoniRec = new Rectangle(0, 0, 23, 23);
+
         while (!Raylib.WindowShouldClose())
         {
             Raylib.BeginDrawing();
@@ -29,7 +39,18 @@ class Game
                 menu.drawButtons();
                 menu.drawPizza();
                 menu.drawBurger();
+                menu.drawPizzaContinue();
+                menu.drawBurgerContinue();
+                menu.Update();
             }
+
+
+            if (menu.isPizzaChecked)
+            {
+                menu.Delete();
+
+            }
+
 
             Raylib.EndDrawing();
         }
