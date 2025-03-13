@@ -24,6 +24,8 @@ class Game
         Rectangle pizzaMargueritaRec = new Rectangle(0, 0, 23, 23);
         Rectangle pizzaPepperoniRec = new Rectangle(0, 0, 23, 23);
 
+        Rectangle chef = new Rectangle(0, Raylib.GetScreenHeight()-23, 23, 23);
+
         while (!Raylib.WindowShouldClose())
         {
             Raylib.BeginDrawing();
@@ -44,10 +46,32 @@ class Game
                 menu.Update();
             }
 
-
+            //game logic
             if (menu.isPizzaChecked)
             {
                 menu.Delete();
+
+                Raylib.DrawRectangleRec(chef, Color.Black);
+                if (Raylib.IsKeyDown(KeyboardKey.A))
+                {
+                    if(chef.X <= 0)
+                    {
+                        chef.X = 0;
+                    }else
+                    {
+                        chef.X -= 10;
+                    }
+                }else if(Raylib.IsKeyDown(KeyboardKey.D))
+                {
+                    if(chef.X >= 778)
+                    {
+                        chef.X = 778;
+                    }else
+                    {
+                        chef.X += 10;
+                    }
+                }
+
 
             }
 
