@@ -14,15 +14,18 @@ class Game
         bool isStarted = init.startCollision;
         secondMenu menu = new secondMenu();
 
+        
+        Random rdn = new Random();
+        
         pizza.Dough = 0;
         pizza.Cheese = 0;
         pizza.Margherita = 0;
         pizza.Pepperoni = 0;
 
-        Rectangle pizzaCheeseRec = new Rectangle(0, 0, 23, 23);
-        Rectangle pizzaDoughRec = new Rectangle(0, 0, 23, 23);
-        Rectangle pizzaMargueritaRec = new Rectangle(0, 0, 23, 23);
-        Rectangle pizzaPepperoniRec = new Rectangle(0, 0, 23, 23);
+        Rectangle pizzaCheeseRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
+        Rectangle pizzaDoughRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
+        Rectangle pizzaMargueritaRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
+        Rectangle pizzaPepperoniRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
 
         Rectangle chef = new Rectangle(0, Raylib.GetScreenHeight()-23, 23, 23);
 
@@ -72,9 +75,32 @@ class Game
                     }
                 }
 
+                //floating itens
+                Raylib.DrawRectangleRec(pizzaDoughRec, Color.Beige);
+                Raylib.DrawRectangleRec(pizzaPepperoniRec, Color.Brown);
+                Raylib.DrawRectangleRec(pizzaCheeseRec, Color.Yellow);
+                Raylib.DrawRectangleRec(pizzaMargueritaRec, Color.Red);
+
+                pizzaDoughRec.Y += 1;
+                pizzaCheeseRec.Y += 1;
+                pizzaMargueritaRec.Y += 1;
+                pizzaPepperoniRec.Y += 1;
+
+                if(Raylib.CheckCollisionRecs(chef,pizzaDoughRec))
+                {
+                    pizza.Dough += 1;
+                }else if(Raylib.CheckCollisionRecs(chef,pizzaCheeseRec))
+                {
+                    pizza.Cheese += 1;
+                }else if(Raylib.CheckCollisionRecs(chef,pizzaMargueritaRec))
+                {
+                    pizza.Margherita += 1;
+                }else if(Raylib.CheckCollisionRecs(chef,pizzaPepperoniRec))
+                {
+                    pizza.Pepperoni += 1;
+                }
 
             }
-
 
             Raylib.EndDrawing();
         }
