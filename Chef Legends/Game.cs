@@ -86,27 +86,51 @@ class Game
                 pizzaMargueritaRec.Y += 1;
                 pizzaPepperoniRec.Y += 1;
 
-                if(Raylib.CheckCollisionRecs(chef,pizzaDoughRec))
+                if (pizzaDoughRec.Y > Raylib.GetScreenHeight())
                 {
-                    pizza.Dough += 1;
                     pizzaDoughRec.Y = 0;
-                }
-                else if(Raylib.CheckCollisionRecs(chef,pizzaCheeseRec))
+                    pizzaCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
+                } else if (pizzaCheeseRec.Y > Raylib.GetScreenHeight())
                 {
-                    pizza.Cheese += 1;
                     pizzaCheeseRec.Y = 0;
-                }
-                else if(Raylib.CheckCollisionRecs(chef,pizzaMargueritaRec))
+                    pizzaDoughRec.X = rdn.Next(Raylib.GetScreenWidth());
+                } else if (pizzaMargueritaRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaMargueritaRec.Y = 0;
-                    pizza.Margherita += 1;
-                }else if(Raylib.CheckCollisionRecs(chef,pizzaPepperoniRec))
+                    pizzaMargueritaRec.X = rdn.Next(Raylib.GetScreenWidth());
+                } else if (pizzaPepperoniRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaPepperoniRec.Y = 0;
+                    pizzaPepperoniRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+
+                if (Raylib.CheckCollisionRecs(chef, pizzaDoughRec))
+                {
+                    pizza.Dough += 1;
+                    pizzaDoughRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    pizzaDoughRec.Y = 0;
+                }
+                else if (Raylib.CheckCollisionRecs(chef, pizzaCheeseRec))
+                {
+                    pizza.Cheese += 1;
+                    pizzaCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    pizzaCheeseRec.Y = 0;
+                }
+                else if (Raylib.CheckCollisionRecs(chef, pizzaMargueritaRec))
+                {
+                    pizzaMargueritaRec.Y = 0;
+                    pizzaMargueritaRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    pizza.Margherita += 1;
+                }
+                else if (Raylib.CheckCollisionRecs(chef, pizzaPepperoniRec))
+                {
+                    pizzaPepperoniRec.Y = 0;
+                    pizzaPepperoniRec.X = rdn.Next(Raylib.GetScreenWidth());
                     pizza.Pepperoni += 1;
                 }
 
             }
+
 
             Raylib.EndDrawing();
         }
