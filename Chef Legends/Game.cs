@@ -89,14 +89,20 @@ class Game
                 if(Raylib.CheckCollisionRecs(chef,pizzaDoughRec))
                 {
                     pizza.Dough += 1;
-                }else if(Raylib.CheckCollisionRecs(chef,pizzaCheeseRec))
+                    pizzaDoughRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,pizzaCheeseRec))
                 {
                     pizza.Cheese += 1;
-                }else if(Raylib.CheckCollisionRecs(chef,pizzaMargueritaRec))
+                    pizzaCheeseRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,pizzaMargueritaRec))
                 {
+                    pizzaMargueritaRec.Y = 0;
                     pizza.Margherita += 1;
                 }else if(Raylib.CheckCollisionRecs(chef,pizzaPepperoniRec))
                 {
+                    pizzaPepperoniRec.Y = 0;
                     pizza.Pepperoni += 1;
                 }
 
