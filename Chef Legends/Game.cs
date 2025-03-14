@@ -129,8 +129,12 @@ class Game
                     pizza.Pepperoni += 1;
                 }
 
-            }
+                Rectangle pizzaCheeseMenu = new Rectangle(0, 0, 23, 23);
+                Rectangle pizzaDoughMenu = new Rectangle(0, 0, 23, 23);
+                Rectangle pizzaMargueritaMenu = new Rectangle(0, 0, 23, 23);
+                Rectangle pizzaPepperoniMenu = new Rectangle(0, 0, 23, 23);
 
+            }
 
             Raylib.EndDrawing();
         }
