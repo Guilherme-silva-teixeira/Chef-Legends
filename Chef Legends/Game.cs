@@ -13,7 +13,7 @@ class Game
         Pizza pizza = new Pizza(0,0,0,0.0f);
         bool isStarted = init.startCollision;
         secondMenu menu = new secondMenu();
-
+        
         
         Random rdn = new Random();
         
