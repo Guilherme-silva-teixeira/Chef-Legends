@@ -10,24 +10,44 @@ class Game
         initWindow init = new initWindow();
         Raylib.InitWindow(800, 600, "Game");
         Raylib.SetTargetFPS(60);
-        Pizza pizza = new Pizza(0,0,0,0.0f);
+        Pizza pizza = new Pizza(0, 0, 0, 0.0f);
+        Burger burger = new Burger(0, 0, 0, 0, 0, 0, 0, 0);
         bool isStarted = init.startCollision;
         secondMenu menu = new secondMenu();
-        
-        
+
         Random rdn = new Random();
-        
+        float menuXPosition = Raylib.GetScreenWidth() - 39;
+        Rectangle chef = new Rectangle(0, Raylib.GetScreenHeight() - 23, 23, 23);
+
+        burger.TopBun = 0;
+        burger.Chicken = 0;
+        burger.Cheese = 0;
+        burger.Egg = 0;
+        burger.Beef = 0;
+        burger.Lettuce = 0;
+        burger.Tomato = 0;
+        burger.BottomBun = 0;
+
+        Rectangle burgerTopBunRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerLettuceRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerCheeseRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerBeefRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerEggRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+
         pizza.Dough = 0;
         pizza.Cheese = 0;
         pizza.Margherita = 0;
         pizza.Pepperoni = 0;
 
-        Rectangle pizzaCheeseRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
-        Rectangle pizzaDoughRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
-        Rectangle pizzaMargueritaRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
-        Rectangle pizzaPepperoniRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 23, 23);
+        Rectangle pizzaCheeseSlot = new Rectangle(menuXPosition,490,37,37);
+        Rectangle pizzaDoughSlot = new Rectangle(menuXPosition, pizzaCheeseSlot.Y - 39, 37, 37);
+        Rectangle pizzaMargueritaSlot = new Rectangle(menuXPosition, pizzaDoughSlot.Y - 39, 37, 37);
+        Rectangle pizzaPepperoniSlot = new Rectangle(menuXPosition, pizzaMargueritaSlot.Y - 39, 37, 37);
 
-        Rectangle chef = new Rectangle(0, Raylib.GetScreenHeight()-23, 23, 23);
+        Rectangle pizzaCheeseRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 27, 27);
+        Rectangle pizzaDoughRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 27, 27);
+        Rectangle pizzaMargueritaRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 27, 27);
+        Rectangle pizzaPepperoniRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth()-23), 0, 27, 27);
 
         while (!Raylib.WindowShouldClose())
         {
@@ -81,6 +101,11 @@ class Game
                 Raylib.DrawRectangleRec(pizzaCheeseRec, Color.Yellow);
                 Raylib.DrawRectangleRec(pizzaMargueritaRec, Color.Red);
 
+                Raylib.DrawRectangleLinesEx(pizzaCheeseSlot, 1, Color.Yellow);
+                Raylib.DrawRectangleLinesEx(pizzaDoughSlot, 1, Color.Beige);
+                Raylib.DrawRectangleLinesEx(pizzaMargueritaSlot, 1, Color.Red);
+                Raylib.DrawRectangleLinesEx(pizzaPepperoniSlot, 1, Color.Brown);
+
                 pizzaDoughRec.Y += 1;
                 pizzaCheeseRec.Y += 1;
                 pizzaMargueritaRec.Y += 1;
@@ -129,15 +154,14 @@ class Game
                     pizza.Pepperoni += 1;
                 }
 
-                Rectangle pizzaCheeseMenu = new Rectangle(0, 0, 23, 23);
-                Rectangle pizzaDoughMenu = new Rectangle(0, 0, 23, 23);
-                Rectangle pizzaMargueritaMenu = new Rectangle(0, 0, 23, 23);
-                Rectangle pizzaPepperoniMenu = new Rectangle(0, 0, 23, 23);
-
+                Raylib.DrawText("" + pizza.Cheese, 0, 0, 23, Color.Black);
+                Raylib.DrawText("" + pizza.Dough, 0, 30, 23, Color.Black);
+                Raylib.DrawText("" + pizza.Margherita, 0, 60, 23, Color.Black);
+                Raylib.DrawText("" + pizza.Pepperoni, 0, 90, 23, Color.Black);
             }
 
             Raylib.EndDrawing();
         }
         Raylib.CloseWindow();
     }
-}
+} 
