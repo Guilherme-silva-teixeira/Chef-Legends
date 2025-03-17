@@ -36,7 +36,7 @@ class Game
         Rectangle burgerBottomBunRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerTomatoRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerChickenRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
-
+        
         Rectangle burgerTopBunSlot = new Rectangle(menuXPosition, 490, 37, 37);
         Rectangle burgerLettuceSlot = new Rectangle(menuXPosition, burgerTopBunSlot.Y - 39, 37, 37);
         Rectangle burgerCheeseSlot = new Rectangle(menuXPosition, burgerLettuceSlot.Y - 39, 37, 37);
