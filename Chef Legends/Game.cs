@@ -33,6 +33,18 @@ class Game
         Rectangle burgerCheeseRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerBeefRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerEggRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerBottomBunRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerTomatoRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+        Rectangle burgerChickenRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
+
+        Rectangle burgerTopBunSlot = new Rectangle(menuXPosition, 490, 37, 37);
+        Rectangle burgerLettuceSlot = new Rectangle(menuXPosition, burgerTopBunSlot.Y - 39, 37, 37);
+        Rectangle burgerCheeseSlot = new Rectangle(menuXPosition, burgerLettuceSlot.Y - 39, 37, 37);
+        Rectangle burgerBeefSlot = new Rectangle(menuXPosition, burgerCheeseSlot.Y - 39, 37, 37);
+        Rectangle burgerEggSlot = new Rectangle(menuXPosition, burgerBeefSlot.Y - 39, 37, 37);
+        Rectangle burgerBottomBunSlot = new Rectangle(menuXPosition, burgerEggSlot.Y - 39, 37, 37);
+        Rectangle burgerTomatoSlot = new Rectangle(menuXPosition, burgerBottomBunSlot.Y - 39, 37, 37);
+        Rectangle burgerChickenSlot = new Rectangle(menuXPosition, burgerTomatoSlot.Y - 39, 37, 37);
 
         pizza.Dough = 0;
         pizza.Cheese = 0;
