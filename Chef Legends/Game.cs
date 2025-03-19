@@ -36,7 +36,7 @@ class Game
         Rectangle burgerBottomBunRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerTomatoRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
         Rectangle burgerChickenRec = new Rectangle(rdn.Next(Raylib.GetScreenWidth() - 23), 0, 27, 27);
-        
+
         Rectangle burgerTopBunSlot = new Rectangle(menuXPosition, 490, 37, 37);
         Rectangle burgerLettuceSlot = new Rectangle(menuXPosition, burgerTopBunSlot.Y - 39, 37, 37);
         Rectangle burgerCheeseSlot = new Rectangle(menuXPosition, burgerLettuceSlot.Y - 39, 37, 37);
@@ -126,16 +126,19 @@ class Game
                 if (pizzaDoughRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaDoughRec.Y = 0;
-                    pizzaCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
-                } else if (pizzaCheeseRec.Y > Raylib.GetScreenHeight())
+                    pizzaDoughRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (pizzaCheeseRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaCheeseRec.Y = 0;
-                    pizzaDoughRec.X = rdn.Next(Raylib.GetScreenWidth());
-                } else if (pizzaMargueritaRec.Y > Raylib.GetScreenHeight())
+                    pizzaCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (pizzaMargueritaRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaMargueritaRec.Y = 0;
                     pizzaMargueritaRec.X = rdn.Next(Raylib.GetScreenWidth());
-                } else if (pizzaPepperoniRec.Y > Raylib.GetScreenHeight())
+                }
+                else if (pizzaPepperoniRec.Y > Raylib.GetScreenHeight())
                 {
                     pizzaPepperoniRec.Y = 0;
                     pizzaPepperoniRec.X = rdn.Next(Raylib.GetScreenWidth());
@@ -171,8 +174,113 @@ class Game
                 Raylib.DrawText("" + pizza.Margherita, 0, 60, 23, Color.Black);
                 Raylib.DrawText("" + pizza.Pepperoni, 0, 90, 23, Color.Black);
             }
+            else if(menu.isBurgerChecked)
+            {
+                menu.Delete();
 
-            Raylib.EndDrawing();
+                Raylib.DrawRectangleRec(chef, Color.Black);
+
+                if (Raylib.IsKeyDown(KeyboardKey.A))
+                {
+                    if (chef.X <= 0)
+                    {
+                        chef.X = 0;
+                    }else
+                    {
+                        chef.X -= 10;
+                    }
+                }else if(Raylib.IsKeyDown(KeyboardKey.D))
+                {
+                    if (chef.X >= 778)
+                    {
+                        chef.X = 778;
+                    }else
+                    {
+                        chef.X += 10;
+                    }
+                }
+
+                Raylib.DrawRectangleRec(burgerTopBunRec, Color.Beige);
+                Raylib.DrawRectangleRec(burgerBeefRec, Color.Brown);
+                Raylib.DrawRectangleRec(burgerBottomBunRec, Color.Beige);
+                Raylib.DrawRectangleRec(burgerCheeseRec, Color.Yellow);
+                Raylib.DrawRectangleRec(burgerChickenRec, Color.Yellow);
+                Raylib.DrawRectangleRec(burgerEggRec, Color.Yellow);
+                Raylib.DrawRectangleRec(burgerLettuceRec, Color.Green);
+                Raylib.DrawRectangleRec(burgerTomatoRec, Color.Red);
+
+                burgerTopBunRec.Y += 1;
+                burgerBeefRec.Y += 1;
+                burgerBottomBunRec.Y += 1;
+                burgerCheeseRec.Y += 1;
+                burgerChickenRec.Y += 1;
+                burgerEggRec.Y += 1;
+                burgerLettuceRec.Y += 1;
+                burgerTomatoRec.Y += 1;
+
+                if (Raylib.CheckCollisionRecs(chef, burgerTopBunRec))
+                {
+                    burger.TopBun += 1;
+                    burgerTopBunRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerTopBunRec.Y = 0;
+                }
+                else if (Raylib.CheckCollisionRecs(chef, burgerBeefRec))
+                {
+                    burger.Beef += 1;
+                    burgerBeefRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerBeefRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,burgerBottomBunRec))
+                {
+                    burger.BottomBun += 1;
+                    burgerBottomBunRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerBottomBunRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,burgerCheeseRec))
+                {
+                    burger.Cheese += 1;
+                    burgerCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerCheeseRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,burgerChickenRec))
+                {
+                    burger.Chicken += 1;
+                    burgerChickenRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerChickenRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef, burgerEggRec))
+                {
+                    burger.Egg += 1;
+                    burgerEggRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerEggRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,burgerLettuceRec))
+                {
+                    burger.Lettuce += 1;
+                    burgerLettuceRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerLettuceRec.Y = 0;
+                }
+                else if(Raylib.CheckCollisionRecs(chef,burgerTomatoRec))
+                {
+                    burger.Tomato += 1;
+                    burgerTomatoRec.X = rdn.Next(Raylib.GetScreenWidth());
+                    burgerTomatoRec.Y = 0;
+                }
+
+                if (burgerTopBunRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerTopBunRec.Y = 0;
+                    burgerTopBunRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (burgerBeefRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerBeefRec.Y = 0;
+                    burgerBeefRec.X = rdn.Next(Raylib.GetRenderWidth());
+                }
+                else if ()
+            }
+
+                Raylib.EndDrawing();
         }
         Raylib.CloseWindow();
     }
