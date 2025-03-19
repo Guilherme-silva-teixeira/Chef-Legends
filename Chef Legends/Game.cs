@@ -277,7 +277,37 @@ class Game
                     burgerBeefRec.Y = 0;
                     burgerBeefRec.X = rdn.Next(Raylib.GetRenderWidth());
                 }
-                else if ()
+                else if (burgerBottomBunRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerBottomBunRec.Y = 0;
+                    burgerBottomBunRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (burgerCheeseRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerCheeseRec.Y = 0;
+                    burgerCheeseRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (burgerChickenRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerChickenRec.Y = 0;
+                    burgerChickenRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (burgerEggRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerEggRec.Y = 0;
+                    burgerEggRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+                else if (burgerLettuceRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerLettuceRec.Y = 0;
+                    burgerLettuceRec.X = rdn.Next(Raylib.GetRenderWidth());
+                }
+                else if(burgerTomatoRec.Y >= Raylib.GetScreenHeight())
+                {
+                    burgerTomatoRec.Y = 0;
+                    burgerLettuceRec.X = rdn.Next(Raylib.GetScreenWidth());
+                }
+
             }
 
                 Raylib.EndDrawing();
