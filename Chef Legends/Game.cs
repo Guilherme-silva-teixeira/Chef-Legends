@@ -1,5 +1,6 @@
 using Raylib_cs;
 using chefLegends;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ChefLegends;
 
@@ -14,6 +15,7 @@ class Game
         Burger burger = new Burger(0, 0, 0, 0, 0, 0, 0, 0);
         bool isStarted = init.startCollision;
         secondMenu menu = new secondMenu();
+        bool isConfig = false;
 
         Random rdn = new Random();
         float menuXPosition = Raylib.GetScreenWidth() - 39;
@@ -80,6 +82,7 @@ class Game
                 menu.drawBurgerContinue();
                 menu.Update();
             }
+
 
             //game logic
             if (menu.isPizzaChecked)
@@ -313,5 +316,10 @@ class Game
                 Raylib.EndDrawing();
         }
         Raylib.CloseWindow();
+    }
+
+    public Boolean drawConfig()
+    {
+        return true;
     }
 } 
